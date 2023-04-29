@@ -1,5 +1,8 @@
 package one.digitalinnovation.gof.service.impl;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +50,12 @@ public class ClienteServiceImpl implements ClienteService {
 	}
 
 	@Override
+	public List<Cliente> buscarPorCep(String cep) {
+		return clienteRepository.findByCep(cep);
+	}
+
+
+	@Override
 	public void inserir(Cliente cliente) {
 		salvarClienteComCep(cliente);
 	}
@@ -65,6 +74,20 @@ public class ClienteServiceImpl implements ClienteService {
 		// Deletar Cliente por ID.
 		clienteRepository.deleteById(id);
 	}
+
+//	@Override
+//	public List<Cliente> buscarPorCep(String cep) {
+//		Endereco endereco = enderecoRepository.findById(cep).get();
+//		ArrayList<Cliente> aClientes = new ArrayList<>();
+//		for(Cliente cliente : clienteRepository.findAll()) {
+//			if(cliente.getEndereco().getCep().equals(cep)){
+//				aClientes.add(cliente);
+//			}
+//		}
+//		return aClientes;
+//	}
+
+
 
 	private void salvarClienteComCep(Cliente cliente) {
 		// Verificar se o Endereco do Cliente já existe (pelo CEP).

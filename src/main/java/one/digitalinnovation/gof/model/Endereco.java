@@ -2,6 +2,7 @@ package one.digitalinnovation.gof.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Os atributos desse modelo foram gerados automaticamente pelo site
@@ -13,6 +14,7 @@ import javax.persistence.Id;
  * @author falvojr
  */
 @Entity
+@Table(name = "tb_endeceros")
 public class Endereco {
 
 	@Id
